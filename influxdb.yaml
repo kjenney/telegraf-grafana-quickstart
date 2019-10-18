@@ -1,0 +1,18 @@
+apiVersion: 1
+
+deleteDatasources:
+  - name: InfluxDB
+    orgId: 1
+
+datasources:
+- name: InfluxDB
+  type: influxdb
+  access: proxy
+  orgId: 1
+  url: http://influxdb:8086
+  user: "${INFLUXDB_USER}"
+  password: "${INFLUXDB_USER_PASSWORD}"
+  database: "${INFLUXDB_DB}"
+  version: 1
+  editable: true
+  isDefault: true

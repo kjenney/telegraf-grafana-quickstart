@@ -1,0 +1,32 @@
+version: '2.1'
+
+services:
+
+  webserver:
+    build: .
+    links:
+      - influxdb
+    ports:
+      - 80:80
+    env_file: .env
+
+  influxdb:
+    image: influxdb
+    ports:
+      - 8086:8086
+    volumes:
+      - "myinfluxdata:/var/lib/influxdb"
+    env_file: .env
+
+  grafana:
+    image: grafana/grafana
+    links:
+      - influxdb
+    ports:
+      - 3000:3000
+    volumes:
+      - ./influxdb.yaml:/etc/grafana/provisioning/datasources/influxdb.yaml
+    env_file: .env
+
+volumes:
+  myinfluxdata:
