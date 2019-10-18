@@ -18,3 +18,7 @@ Run the following commands:
 docker-compose build
 docker-compose up -d
 ```
+
+## Telegraph Logparser
+
+There's a task that's kicked off to dump info into a log. This log is parsed by Telegraf. The metric id is test1.
